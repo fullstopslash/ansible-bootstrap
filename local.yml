@@ -57,10 +57,10 @@
 #   roles:
 #     - gui
 #
-# - name: Install roles for flatpak
-#   hosts: flatpak
-#   roles:
-#     - flatpak
+- name: Install roles for flatpak
+  hosts: flatpak
+  roles:
+    - flatpak
 #
 # - name: Install roles for pipx
 #   hosts: pipx
