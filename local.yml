@@ -43,7 +43,7 @@
     - apt-gui
 
 - name: Install roles for apt based hosts
-  hosts: apt
+  hosts: minime
   roles:
     - apt
 
