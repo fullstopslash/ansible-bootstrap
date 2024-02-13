@@ -22,20 +22,55 @@
 #       when: lookup('file', '/etc/opt/ansible-secrets/README.md', errors='ignore')
 #   tags: boot
 
-- name: Install docker role
-  hosts: docker_hosts
-  roles:
-    - geerlingguy.docker
+# - name: Install docker role
+#   hosts: docker_hosts
+#   roles:
+#     - geerlingguy.docker
+#
+# - name: Install roles for gfx hosts
+#   hosts: stream_host
+#   roles:
+#     - stream_host
 
-- name: Install roles for gfx hosts
-  hosts: stream_host
+- name: Install roles for GUI hosts
+  hosts: arch
   roles:
-    - stream_host
+    - arch
+
+- name: Install roles for GUI hosts
+  hosts: apt-gui
+  roles:
+    - apt-gui
+
+- name: Install roles for GUI hosts
+  hosts: apt
+  roles:
+    - apt
+
+- name: Install roles for GUI hosts
+  hosts: dnf
+  roles:
+    - dnf
 
 - name: Install roles for GUI hosts
   hosts: gui
   roles:
     - gui
+
+- name: Install roles for work
+  hosts: flatpak
+  roles:
+    - flatpak
+
+- name: Install roles for work
+  hosts: pipx
+  roles:
+    - pipx
+
+- name: Install roles for work
+  hosts: samba
+  roles:
+    - samba
 
 - name: Install roles for work
   hosts: work
