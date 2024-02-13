@@ -15,7 +15,7 @@
 - name: Install roles for fedora/dnf install hosts
   hosts: fedora
   roles:
-    - dnf5
+    - dnf4
 
 - name: Install roles for flatpak
   hosts: flatpak
