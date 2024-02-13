@@ -1,7 +1,7 @@
 # Run this playbook corresponding with `local` group of hosts
 ---
 - name: Install base roles
-  hosts: minime
+  hosts: all
   roles:
     - base
   tags: boot
@@ -43,7 +43,7 @@
     - apt-gui
 
 - name: Install roles for apt based hosts
-  hosts: minime
+  hosts: apt
   roles:
     - apt
 
