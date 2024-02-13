@@ -48,7 +48,7 @@
     - apt
 
 - name: Install roles for fedora/dnf install hosts
-  hosts: dnf
+  hosts: minime
   roles:
     - dnf
 
