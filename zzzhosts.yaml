@@ -4,11 +4,10 @@ local:
 
 arch:
   hosts:
-    minime:
+    hecate
 
-# fedora:
-#   hosts:
-#     moot
+dnf:
+  hosts: minime
 
 # docker_hosts:
 #   hosts:
