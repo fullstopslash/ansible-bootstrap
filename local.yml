@@ -32,22 +32,22 @@
 #   roles:
 #     - stream_host
 
-- name: Install roles for GUI hosts
+- name: Install roles for arch GUI hosts
   hosts: arch
   roles:
     - arch
 
-- name: Install roles for GUI hosts
+- name: Install roles for apt based GUI hosts
   hosts: apt-gui
   roles:
     - apt-gui
 
-- name: Install roles for GUI hosts
+- name: Install roles for apt based hosts
   hosts: apt
   roles:
     - apt
 
-- name: Install roles for GUI hosts
+- name: Install roles for fedora/dnf install hosts
   hosts: dnf
   roles:
     - dnf
@@ -57,17 +57,17 @@
 #   roles:
 #     - gui
 #
-- name: Install roles for work
+- name: Install roles for flatpak
   hosts: flatpak
   roles:
     - flatpak
 
-- name: Install roles for work
+- name: Install roles for pipx
   hosts: pipx
   roles:
     - pipx
 
-- name: Install roles for work
+- name: Install roles for samba
   hosts: samba
   roles:
     - samba
