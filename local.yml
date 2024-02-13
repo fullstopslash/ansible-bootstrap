@@ -37,12 +37,12 @@
 #   roles:
 #     - stream_host
 #
-- name: Install roles for arch GUI hosts
-  hosts: arch
-  become: yes
-  roles:
-    - arch
-
+# - name: Install roles for arch GUI hosts
+#   hosts: arch
+#   become: yes
+#   roles:
+#     - arch
+#
 #
 # - name: Install roles for apt based GUI hosts
 #   hosts: apt-gui
