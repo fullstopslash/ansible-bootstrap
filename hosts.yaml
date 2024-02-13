@@ -6,7 +6,7 @@ arch:
   hosts:
     hecate
 
-fedora:
+dnf:
   hosts:
     minime
 
