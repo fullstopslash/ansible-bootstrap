@@ -1,7 +1,7 @@
 # Run this playbook corresponding with `local` group of hosts
 ---
 - name: Install base roles
-  hosts: all
+  hosts: minime
   roles:
     - base
   tags: boot
