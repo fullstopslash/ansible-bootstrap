@@ -4,3 +4,4 @@
     name:
       - taskwarrior-tui
       - pueue   # queing service for newsboat
+      - yazi-fm

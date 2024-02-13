@@ -5,7 +5,6 @@
   vars:
     packages:
       - task
-      - yazi
       - lf
       - ranger
       - entr # Needed by tmux plugins
