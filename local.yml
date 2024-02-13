@@ -52,11 +52,11 @@
   roles:
     - dnf
 
-- name: Install roles for GUI hosts
-  hosts: gui
-  roles:
-    - gui
-
+# - name: Install roles for GUI hosts
+#   hosts: gui
+#   roles:
+#     - gui
+#
 - name: Install roles for work
   hosts: flatpak
   roles:
