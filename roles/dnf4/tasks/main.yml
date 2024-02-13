@@ -5,7 +5,7 @@
   vars:
     packages:
       - task
-      - lf
+      # - lf
       - ranger
       - entr # Needed by tmux plugins
       - aspell
@@ -18,44 +18,44 @@
       - chromium
       - kitty
       - alacritty
-      - gopass 
-      - gopass-jsonapi
-      - gopass-hibp 
-      - gopass-summon-provider
+      # - gopass
+      # - gopass-jsonapi
+      # - gopass-hibp
+      # - gopass-summon-provider
       - lynx
       - w3m
       - isync
-      - python-pip
-      - python-pipx
-      - python-virtualenv
-      - python-pyserial
+      # - python-pip
+      # - python-pipx
+      # - python-virtualenv
+      # - python-pyserial
       - neomutt
       - newsboat
       - timew
       - task # taskwiki will fail without these
-      - go-yq
+      # - go-yq
       - pandoc
       - glow
       - chezmoi
       - inkscape
-      - tmatrix
+      # - tmatrix
       - btop
       - python-pynvim
       - git-delta
       - syncthing
-      - wmutils
-      - wmctl
+      # - wmutils
+      # - wmctl
       - wl-clipboard
       - automake
       - patch   # for compiling tmux
       - boost
-      - fprint
+      # - fprint
       - fprintd
       - kio-admin
       - mpv
       - mpc
-      - mpd
-      - asdf
+      # - mpd
+      # - asdf
       - npm
       - go
       - rust
