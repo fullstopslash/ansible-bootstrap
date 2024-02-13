@@ -59,6 +59,7 @@
       - npm
       - go
       - rust
+      - cargo
 
 # - name: Start and enable Pueue Service
 #   systemd:
