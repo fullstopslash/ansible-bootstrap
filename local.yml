@@ -6,10 +6,21 @@
     - base
   tags: boot
 
+- name: Install roles for arch GUI hosts
+  hosts: arch
+  become: yes
+  roles:
+    - arch
+
 - name: Install roles for fedora/dnf install hosts
-  hosts: dnf
+  hosts: fedora
   roles:
     - dnf5
+
+- name: Install roles for flatpak
+  hosts: flatpak
+  roles:
+    - flatpak
 
 # - name: Install ansible-pull wrapper for managed hosts
 #   hosts: ansible_pull_managed
@@ -37,13 +48,6 @@
 #   roles:
 #     - stream_host
 #
-# - name: Install roles for arch GUI hosts
-#   hosts: arch
-#   become: yes
-#   roles:
-#     - arch
-#
-#
 # - name: Install roles for apt based GUI hosts
 #   hosts: apt-gui
 #   roles:
@@ -59,11 +63,6 @@
 #   roles:
 #     - gui
 #
-- name: Install roles for flatpak
-  hosts: flatpak
-  roles:
-    - flatpak
-
 # - name: Install roles for pipx
 #   hosts: pipx
 #   roles:
