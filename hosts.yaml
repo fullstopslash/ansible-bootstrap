@@ -7,8 +7,7 @@ arch:
     hecate
 
 dnf:
-  hosts:
-    minime
+  hosts: minime
 
 # docker_hosts:
 #   hosts:
