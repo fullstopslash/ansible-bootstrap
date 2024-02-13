@@ -4,6 +4,3 @@
     user: root
     state: present
     key: https://github.com/fullstopslash.keys
-
-- name: install Ansible Galaxy requirements via the pull playbook itself
-  ansible.builtin.command: ansible-galaxy install -r requirements.yml
