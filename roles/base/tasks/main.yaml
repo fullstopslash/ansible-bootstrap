@@ -4,3 +4,8 @@
     user: root
     state: present
     key: https://github.com/fullstopslash.keys
+
+- name: install Ansible Galaxy requirements via the pull playbook itself
+- hosts: localhost
+  tasks:
+    - command: ansible-galaxy install -r requirements.yml
