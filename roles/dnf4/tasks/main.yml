@@ -1,6 +1,6 @@
 ---
 - name: Install GUI packages
-  ansible.builtin.dnf4:
+  ansible.builtin.dnf:
     name: "{{ packages }}"
   vars:
     packages:
