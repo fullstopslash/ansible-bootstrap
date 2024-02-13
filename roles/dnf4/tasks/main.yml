@@ -35,12 +35,12 @@
       - task # taskwiki will fail without these
       # - go-yq
       - pandoc
-      - glow
-      - chezmoi
+      # - glow
+      # - chezmoi
       - inkscape
       # - tmatrix
       - btop
-      - python-pynvim
+      # - python-pynvim
       - git-delta
       - syncthing
       # - wmutils
