@@ -1,7 +1,4 @@
 ---
-- name: Install required ansible-galaxy roles
-  local_action: shell ansible-galaxy install -r requirements.yaml
-
 - name: Install base roles
   hosts: all
   become: yes
