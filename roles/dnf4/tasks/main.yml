@@ -5,7 +5,6 @@
   vars:
     packages:
       - task
-      - taskwarrior-tui
       - yazi
       - lf
       - ranger
@@ -16,9 +15,8 @@
       - make
       - aspell-en
       - weechat
-      - ueberzugpp
+      # - ueberzugpp
       - chromium
-      - pueue   # queing service for newsboat
       - kitty
       - alacritty
       - gopass 
@@ -35,10 +33,7 @@
       - neomutt
       - newsboat
       - timew
-      - taskwarrior
-      - taskwarrior-tui 
       - task # taskwiki will fail without these
-      - taskwarrior-tui
       - go-yq
       - pandoc
       - glow
@@ -62,11 +57,9 @@
       - mpc
       - mpd
       - asdf
-      - yay
       - npm
       - go
       - rust
-      - plasma-wayland-session
 
 - name: Start and enable Pueue Service
   systemd:

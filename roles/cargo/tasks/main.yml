@@ -1,0 +1,6 @@
+---
+- name: Install "taskwarrior-tui" Rust package
+  community.general.cargo:
+    name:
+      - taskwarrior-tui
+      - pueue   # queing service for newsboat

@@ -18,6 +18,11 @@
   roles:
     - dnf4
 
+- name: Install roles for arch GUI hosts
+  hosts: cargo
+  roles:
+    - cargo
+
 - name: Install roles for flatpak
   hosts: flatpak
   roles:
