@@ -7,7 +7,7 @@
   tags: boot
 
 - name: Install roles for fedora/dnf install hosts
-  hosts: minime
+  hosts: dnf
   roles:
     - dnf
 
