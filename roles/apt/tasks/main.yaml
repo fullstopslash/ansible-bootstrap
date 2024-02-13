@@ -1,0 +1,9 @@
+---
+- name: Install tool to detect local caching proxies
+  ansible.builtin.apt:
+    name: squid-deb-proxy-client
+  when: ansible_facts["distribution_major_version"] != "12"
+
+- name: Install tool to detect apt proxies
+  ansible.builtin.apt:
+    name: auto-apt-proxy

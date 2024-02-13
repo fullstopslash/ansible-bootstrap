@@ -1,22 +1,22 @@
 ---
 roles:
-  - name: geerlingguy.docker
-    src: https://github.com/geerlingguy/ansible-role-docker
-    version: 6.1.0
+  # - name: geerlingguy.docker
+  #   src: https://github.com/geerlingguy/ansible-role-docker
+  #   version: 6.1.0
+  #
+  # - name: geerlingguy.kubernetes
+  #   src: https://github.com/geerlingguy/ansible-role-kubernetes
+  #   version: 5.0.1
 
-  - name: geerlingguy.kubernetes
-    src: https://github.com/geerlingguy/ansible-role-kubernetes
-    version: 5.0.1
-
-  # - name: devsec.hardening
-  #   src: https://github.com/dev-sec/ansible-collection-hardening
-  #   version: 9.0.0
-
-  - name: ivan-c.sumologic
-    src: https://github.com/ivan-c/ansible-role-sumologic
-
-  - name: ivan-c.ansible_pull
-    src: https://github.com/ivan-c/ansible-role-ansible-pull
+  - name: devsec.hardening
+    src: https://github.com/dev-sec/ansible-collection-hardening
+    # version: 9.0.0
+  #
+  # - name: ivan-c.sumologic
+  #   src: https://github.com/ivan-c/ansible-role-sumologic
+  #
+  # - name: ivan-c.ansible_pull
+  #   src: https://github.com/ivan-c/ansible-role-ansible-pull
 
 collections:
   # required by plugins.callback.ndjson
@@ -24,9 +24,8 @@ collections:
     version: 1.1.1
 
   - name: devsec.hardening
-    version: 9.0.0
+    # version: 9.0.0
 
   # TODO update after upgrading to ansible 2.11
   # last version with ansible 2.9 and 2.10 support
   - name: community.general
-    version: 4.8.9
