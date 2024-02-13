@@ -1,6 +1,6 @@
 ---
 - name: Install GUI packages
-  ansible.builtin.dnf:
+  ansible.builtin.dnf5:
     name: "{{ packages }}"
   vars:
     packages:
@@ -67,26 +67,6 @@
       - go
       - rust
       - plasma-wayland-session
-
-- name: Install package from AUR yay
-  community.general.pacman:
-    name: "{{ packages }}"
-    state: present
-    executable: yay
-    extra_args: --builddir /var/cache/yay
-  vars:
-    packages:
-      - kwalletcli
-      - kmonad-bin
-      - syncthingtray
-      - mpdris2
-      - taskopen
-      - neovim
-      - quickemu
-      - quickgui
-      - aria2
-      - texlive-full
-      - cura
 
 - name: Start and enable Pueue Service
   systemd:

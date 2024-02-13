@@ -1,15 +1,15 @@
-# Run this playbook corresponding with `local` group of hosts
 ---
 - name: Install base roles
   hosts: all
+  become: yes
   roles:
     - base
-  tags: boot
+  # tags: boot
 
 - name: Install roles for fedora/dnf install hosts
   hosts: dnf
   roles:
-    - dnf
+    - dnf5
 
 # - name: Install ansible-pull wrapper for managed hosts
 #   hosts: ansible_pull_managed
@@ -37,10 +37,12 @@
 #   roles:
 #     - stream_host
 #
-# - name: Install roles for arch GUI hosts
-#   hosts: arch
-#   roles:
-#     - arch
+- name: Install roles for arch GUI hosts
+  hosts: arch
+  become: yes
+  roles:
+    - arch
+
 #
 # - name: Install roles for apt based GUI hosts
 #   hosts: apt-gui

@@ -7,3 +7,8 @@
 - name: Install tool to detect apt proxies
   ansible.builtin.apt:
     name: auto-apt-proxy
+
+- name: Install flatpak
+  ansible.builtin.apt:
+    name: flatpak
+

@@ -1,5 +1,5 @@
 ---
-- name: Add my Github keys to root authorized_keys
+- name: "Add my Github keys to root authorized_keys"
   ansible.posix.authorized_key:
     user: root
     state: present

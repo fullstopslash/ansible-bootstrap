@@ -1,29 +1,27 @@
 ---
-- name: Install GUI packages
-  ansible.builtin.pacman:
+- name: Pacman Gui
+  community.general.pacman:
     name: "{{ packages }}"
   vars:
     packages:
       - task
-      - taskwarrior-tui
       - yazi
       - lf
       - ranger
-      - entr # Needed by tmux plugins
+      - entr   # Needed by tmux plugins
       - aspell
       - autogen
       - autoconf
       - make
       - aspell-en
       - weechat
-      - ueberzugpp
       - chromium
       - pueue   # queing service for newsboat
       - kitty
       - alacritty
-      - gopass 
+      - gopass
       - gopass-jsonapi
-      - gopass-hibp 
+      - gopass-hibp
       - gopass-summon-provider
       - lynx
       - w3m
@@ -35,22 +33,16 @@
       - neomutt
       - newsboat
       - timew
-      - taskwarrior
-      - taskwarrior-tui 
-      - task # taskwiki will fail without these
-      - taskwarrior-tui
       - go-yq
       - pandoc
       - glow
       - chezmoi
       - inkscape
-      - tmatrix
       - btop
       - python-pynvim
       - git-delta
       - syncthing
-      - wmutils
-      - wmctl
+      - wmctrl
       - wl-clipboard
       - automake
       - patch   # for compiling tmux
@@ -61,36 +53,90 @@
       - mpv
       - mpc
       - mpd
-      - asdf
+      - yt-dlp
+      # - asdf
       - yay
+      - flatpak
       - npm
       - go
       - rust
+      - pueue
       - plasma-wayland-session
 
-- name: Install package from AUR yay
-  community.general.pacman:
-    name: "{{ packages }}"
-    state: present
-    executable: yay
-    extra_args: --builddir /var/cache/yay
-  vars:
-    packages:
+- name: Create the `aur_builder` user
+  become: yes
+  ansible.builtin.user:
+    name: aur_builder
+    create_home: yes
+    group: wheel
+
+- name: Allow the `aur_builder` user to run `sudo pacman` without a password
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers.d/11-install-aur_builder
+    line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+    create: yes
+    mode: 0644
+    validate: 'visudo -cf %s'
+
+- name: Install packages using yay
+  kewlfft.aur.aur:
+    use: yay
+    name:
       - kwalletcli
       - kmonad-bin
-      - syncthingtray
-      - mpdris2
-      - taskopen
       - neovim
       - quickemu
-      - quickgui
-      - aria2
+      - taskwarrior-tui-git
       - texlive-full
-      - cura
+      - tmatrix-git
+      - ueberzugpp
+      - taskopen
+      - syncthingtray
+      - mpdris2
+      # - quickgui
+      - aria2
+      - cura-bin
+  become: yes
+  become_user: aur_builder
+
+# - name: Install package from AUR yay
+#   community.general.pacman:
+#     name: "{{ packages }}"
+#     state: present
+#     executable: yay
+#     extra_args: --builddir /var/cache/yay --noconfirm
+#   vars:
+#     packages:
+#       - kwalletcli
+#       - kmonad-bin
+#       - neovim
+#       - quickemu
+#       - taskwarrior-tui-git
+#       - texlive-full
+#       - tmatrix-git
+#       - ueberzugpp
+#       - taskopen
+#       - syncthingtray
+#       - mpdris2
+#       - quickgui
+#       - aria2
+#       - cura
+
+
+
+# - name: Install package from AUR using a Pacman compatible AUR helper
+#   community.general.pacman:
+#     name: ueberzugpp
+#     state: present
+#     executable: yay
+#     extra_args: --builddir /var/cache/yay
 
 - name: Start and enable Pueue Service
-  systemd:
+  ansible.builtin.systemd_service:
     name: pueued
     state: started
     enabled: yes
     scope: user
+  become: yes
+  become_user: rain

@@ -26,6 +26,9 @@ collections:
   - name: devsec.hardening
     # version: 9.0.0
 
+  - name: kewlfft.aur
+
   # TODO update after upgrading to ansible 2.11
   # last version with ansible 2.9 and 2.10 support
+  # For pacman
   - name: community.general
