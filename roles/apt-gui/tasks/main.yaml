@@ -1,0 +1,10 @@
+---
+- name: Install GUI packages
+  ansible.builtin.apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - task-laptop
+      - task-kde-desktop
+      - chromium
+      - git-delta

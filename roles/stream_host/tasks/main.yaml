@@ -1,0 +1,14 @@
+---
+- name: Install required packages
+  ansible.builtin.apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - nfs-common
+
+- name: Install flatpak apps
+  community.general.flatpak:
+    name: "{{ item }}"
+  with_items:
+    - com.valvesoftware.Steam
+    - org.DolphinEmu.dolphin-emu

@@ -1,0 +1,7 @@
+---
+- name: Install required firmware
+  ansible.builtin.apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - firmware-amd-graphics

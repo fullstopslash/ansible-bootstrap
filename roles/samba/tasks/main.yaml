@@ -1,0 +1,131 @@
+# Install Samba on Fedora
+---
+- name: install samba and related packages
+  become: true
+  ansible.builtin.dnf:
+    state: present
+    name:
+      - cups-libs
+      - samba
+      - samba-common
+      - samba-client
+      - samba-usershares
+      - kdenetwork-filesharing
+
+- name: Install basic packages
+  become: true
+  ansible.builtin.dnf:
+    state: present
+    name:
+      - libreoffice
+      - vlc
+      - gimp
+      - nomacs
+      - discord
+      - steam
+      - brave-browser
+      - firefox
+      - gnome-tweaks
+      - neofetch
+      - htop
+      - rofi
+      - remmina
+
+- name: Ensure "sambashare" group exists
+  ansible.builtin.group:
+    name: sambashare
+    state: present
+
+- name: Add the user 'rain' with a bash shell, appending the group 'sambashare' to the user's groups
+  ansible.builtin.user:
+    name: rain
+    # shell: /bin/bash
+    groups: sambashare
+    append: yes
+
+- name: change group ownership of usershares
+  ansible.builtin.file:
+    path: /var/lib/samba/usershares
+    recurse: true
+    state: directory
+    owner: root
+    group: sambashare
+  become: true
+
+- name: Set SAMBA password
+  ansible.builtin.shell: |
+    smbpasswd -x {{ smb_user }} || true;
+    smbpasswd -a -s {{ smb_user }}
+  args:
+    stdin: "{{ smb_password }}"
+    stdin_add_newline: true
+    executable: /bin/bash
+  become: true
+  when: enabled
+
+- name: Give insecure permissions to an existing file
+  ansible.builtin.file:
+    path: /var/lib/samba/usershares
+    owner: root
+    group: sambashare
+    mode: '1770'
+  become: true
+
+# - name: create a directory to share
+#   file:
+#     path: /opt/samba/
+#     mode: 0755
+#     state: directory
+#
+# - name: put a dummy file in the share
+#   template:
+#     src: files/default.j2
+#     dest: /opt/samba/info.txt
+#     mode: 0644
+
+- name: set selinux boolean
+  command: /usr/sbin/setsebool -P allow_smbd_anon_write=1
+  become: true
+
+- name: allow full access (r/w)
+  command: /usr/sbin/setsebool -P samba_export_all_rw on
+
+- name: allow home dirs
+  command: /usr/sbin/setsebool -P samba_enable_home_dirs=1
+
+- name: set selinux context
+  command: /usr/bin/chcon -t samba_share_t /opt/samba/
+
+# - name: set selinux fcontext
+#   command: semanage fcontext --add --type samba_share_t "{{ samba.shares }}"
+
+- name: add a share
+  lineinfile:
+    dest: /etc/samba/smb.conf
+    regexp: ''
+    insertafter: EOF
+    line: '[samba]\n\tpath = /opt/samba/\n\tread only = no\n;\tbrowseable = yes\n'
+
+- name: configure firewall, allow samba traffic
+  firewalld:
+    service: samba
+    permanent: true
+    state: enabled
+
+- name: configure firewall, allow samba-client traffic
+  firewalld:
+    service: samba-client
+    permanent: true
+    state: enabled
+
+- name: start samba
+  service:
+    name: smb
+    state: started
+    enabled: yes
+
+- name: start named
+  service:
+    name: nmb
+    state: started
+    enabled: yes

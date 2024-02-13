@@ -1,0 +1,58 @@
+# Run this playbook corresponding with `local` group of hosts
+---
+- name: Install base roles
+  hosts: all
+  roles:
+    - base
+  tags: boot
+
+- name: Install ansible-pull wrapper for managed hosts
+  hosts: ansible_pull_managed
+  roles:
+    - ivan_c.ansible_pull
+  tags: boot
+
+- name: Install roles for collecting remote logs
+  hosts: log_collection
+  tasks:
+    - name: Install remote logging role, if secrets configured
+      ansible.builtin.include_role:
+        name: ivan-c.sumologic
+      # skip if ansible-secrets repo absent
+      when: lookup('file', '/etc/opt/ansible-secrets/README.md', errors='ignore')
+  tags: boot
+
+- name: Install docker role
+  hosts: docker_hosts
+  roles:
+    - geerlingguy.docker
+
+- name: Install roles for gfx hosts
+  hosts: stream_host
+  roles:
+    - stream_host
+
+- name: Install roles for GUI hosts
+  hosts: gui
+  roles:
+    - gui
+
+- name: Install roles for work
+  hosts: work
+  roles:
+    - work
+
+- name: Install roles for biostar hosts
+  hosts: biostar_firmware
+  roles:
+    - biostar_firmware
+
+- name: Install roles for HP hosts
+  hosts: hp_firmware
+  roles:
+    - hp_firmware
+
+- name: Install roles for AMD hosts
+  hosts: amd_firmware
+  roles:
+    - amd_firmware

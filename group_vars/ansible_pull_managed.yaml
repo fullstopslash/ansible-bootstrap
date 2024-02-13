@@ -1,0 +1,8 @@
+---
+# set systemd Environment entries for service
+ansible_pull_service_environment:
+  HOME: /root
+  ANSIBLE_CALLBACK_PLUGINS: plugins/callback
+  ANSIBLE_CALLBACK_WHITELIST: ndjson
+  ANSIBLE_STDOUT_CALLBACK: ndjson
+ansible_pull_playbook_repo: https://github.com/ivan-c/ansible-bootstrap

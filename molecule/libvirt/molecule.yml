@@ -1,0 +1,19 @@
+---
+driver:
+  name: vagrant
+  provider:
+    name: libvirt
+  provision: true
+platforms:
+  - name: bookworm
+    # pin to current debian stable
+    # installing Zoom flatpak requires more than 512 MB memory
+    memory: 1024
+    box: debian/bookworm64
+    groups:
+      - ansible_pull_managed
+      # TODO enable after able to add component idempotently
+      # - biostar_firmware
+      - docker_hosts
+      # installing Zoom flatpak requires ability to create namespace
+      - work

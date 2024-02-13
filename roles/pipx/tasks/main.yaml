@@ -1,0 +1,27 @@
+---
+# - name: Install pipx
+#   ansible.builtin.pip:
+#     name: pipx
+- name: Install Pipx Packages for user
+  community.general.pipx:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - internetarchive
+      - beets
+      - epy-reader
+      - grip
+      - jrnl
+      - khal
+      - markdown-anki-decks
+      - mdspli
+      - ocrmypdf
+      - pandoc-include
+      - pyfiglet
+      - pyradio
+      - pyvizio
+      - roll-cli
+      - termtyper
+      - tmuxp
+      - vdirsyncer
+      - youtube-dl

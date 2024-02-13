@@ -1,0 +1,26 @@
+# global molecule config
+# to use this file as-is, set MOLECULE_GLOB environment variable to full path of this file
+# to extend this file, pass `--base-config molecule/resources/scenarios/default/molecule.yml` to `molecule`
+---
+driver:
+  name: docker
+platforms:
+  - name: instance
+    # pin to current debian stable
+    image: python:3-bookworm
+    pre_build_image: true
+dependency:
+  name: galaxy
+  options:
+    # `molecule` invokes `ansible-galaxy` in the same directory it's invoked in (ie not in molecule/default/)
+    role-file: requirements.yaml
+provisioner:
+  name: ansible
+  config_options:
+    defaults:
+      # TODO remove after upgrading from ansible 2.10
+      # silence version warnings from community.docker collection built into molecule
+      collections_on_ansible_version_mismatch: ignore
+
+  playbooks:
+    converge: ../../molecule/resources/playbooks/converge.yml

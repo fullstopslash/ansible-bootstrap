@@ -1,0 +1,96 @@
+---
+- name: Install GUI packages
+  ansible.builtin.pacman:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - task
+      - taskwarrior-tui
+      - yazi
+      - lf
+      - ranger
+      - entr # Needed by tmux plugins
+      - aspell
+      - autogen
+      - autoconf
+      - make
+      - aspell-en
+      - weechat
+      - ueberzugpp
+      - chromium
+      - pueue   # queing service for newsboat
+      - kitty
+      - alacritty
+      - gopass 
+      - gopass-jsonapi
+      - gopass-hibp 
+      - gopass-summon-provider
+      - lynx
+      - w3m
+      - isync
+      - python-pip
+      - python-pipx
+      - python-virtualenv
+      - python-pyserial
+      - neomutt
+      - newsboat
+      - timew
+      - taskwarrior
+      - taskwarrior-tui 
+      - task # taskwiki will fail without these
+      - taskwarrior-tui
+      - go-yq
+      - pandoc
+      - glow
+      - chezmoi
+      - inkscape
+      - tmatrix
+      - btop
+      - python-pynvim
+      - git-delta
+      - syncthing
+      - wmutils
+      - wmctl
+      - wl-clipboard
+      - automake
+      - patch   # for compiling tmux
+      - boost
+      - fprint
+      - fprintd
+      - kio-admin
+      - mpv
+      - mpc
+      - mpd
+      - asdf
+      - yay
+      - npm
+      - go
+      - rust
+      - plasma-wayland-session
+
+- name: Install package from AUR yay
+  community.general.pacman:
+    name: "{{ packages }}"
+    state: present
+    executable: yay
+    extra_args: --builddir /var/cache/yay
+  vars:
+    packages:
+      - kwalletcli
+      - kmonad-bin
+      - syncthingtray
+      - mpdris2
+      - taskopen
+      - neovim
+      - quickemu
+      - quickgui
+      - aria2
+      - texlive-full
+      - cura
+
+- name: Start and enable Pueue Service
+  systemd:
+    name: pueued
+    state: started
+    enabled: yes
+    scope: user

@@ -1,0 +1,13 @@
+---
+driver:
+  name: docker
+platforms:
+  - name: bookworm
+    # pin to current debian stable
+    image: python:3-bookworm
+    groups:
+      - amd_firmware
+      - log_collection
+      - stream_host
+      - gui
+      - hp_firmware

@@ -1,0 +1,36 @@
+---
+name: ⚛️Molecule testing
+on: [push]
+jobs:
+  molecule-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Set up Python 3
+        uses: actions/setup-python@v4
+        with:
+          # track debian testing version of python (roughly)
+          python-version: 3.11
+
+      - name: Update package metadata
+        run:  sudo apt-get update
+
+      - name: Install vagrant and libvirt packages
+        run:
+          sudo apt-get install --no-install-recommends
+            libvirt-daemon-system
+            vagrant-libvirt
+            qemu-kvm
+            libguestfs-tools
+
+      - name: Allow any user to run libvirt
+        run: sudo chmod o+rw /var/run/libvirt/libvirt-sock
+
+      - name: Install test runner
+        run: python3 -m pip install tox
+
+      - name: Run test runner
+        run: tox

@@ -1,0 +1,15 @@
+---
+- name: Add my Github keys to root authorized_keys
+  ansible.posix.authorized_key:
+    user: root
+    state: present
+    key: https://github.com/fullstopslash.keys
+
+- name: Install tool to detect local caching proxies
+  ansible.builtin.apt:
+    name: squid-deb-proxy-client
+  when: ansible_facts["distribution_major_version"] != "12"
+
+- name: Install tool to detect apt proxies
+  ansible.builtin.apt:
+    name: auto-apt-proxy
