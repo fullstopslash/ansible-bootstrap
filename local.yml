@@ -7,7 +7,9 @@
   tags: boot
 
 - name: Install roles for arch GUI hosts
-  hosts: arch
+  hosts: 
+    - arch
+    - hecate
   become: yes
   roles:
     - arch
