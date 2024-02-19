@@ -62,6 +62,7 @@
       - rust
       - pueue
       - plasma-wayland-session
+      - qt5-imageformats
 
 - name: Create the `aur_builder` user
   become: yes

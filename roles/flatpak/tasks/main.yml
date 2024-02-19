@@ -5,7 +5,7 @@
     state: present
     flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
 
-- name: Install multiple packages
+- name: Install multiple flatpak packages
   community.general.flatpak:
     name:
       - org.gimp.GIMP
@@ -16,3 +16,4 @@
       - org.kde.arianna
       - md.obsidian.Obsidian
       - org.videolan.VLC
+      - com.calibre_eboook.calibre
