@@ -1,0 +1,9 @@
+---
+- name: Start and enable Openssh Service
+  ansible.builtin.systemd_service:
+    name: opensshd
+    state: started
+    enabled: yes
+    scope: system
+  become: yes
+  become_user: rain

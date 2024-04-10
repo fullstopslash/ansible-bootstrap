@@ -1,66 +1,88 @@
 ---
+# - name: DNF copr enable pennbauman
+#   command:
+#     cmd: "dnf copr enable pennbauman/ports"
+#     creates: /etc/yum.repos.d/_copr_ganto-lxd.repo
+#
+# - name: Enable Fedora Copr for LXD
+#   community.general.copr:
+#     name: ganto/lxd
+#
+#
+
+- command:
+    cmd: dnf config-manager --add-repo https://repository.mullvad.net/rpm/stable/mullvad.repo
+    warn: false
+  args:
+    creates: /etc/yum.repos.d/mullvad-vpn.repo
+
+- name: Enable Fedora Copr for pennbauman
+  community.general.copr:
+    name: pennbauman/ports
+
 - name: Install GUI packages
   ansible.builtin.dnf:
     name: "{{ packages }}"
   vars:
     packages:
-      - task
-      # - lf
-      - ranger
-      - entr # Needed by tmux plugins
-      - aspell
-      - autogen
-      - autoconf
-      - make
-      - aspell-en
-      - weechat
-      # - ueberzugpp
-      - chromium
-      - kitty
-      - alacritty
+      # - asdf
+      # - chezmoi
+      # - fprint
+      # - glow
+      # - go-yq
       # - gopass
-      # - gopass-jsonapi
       # - gopass-hibp
+      # - gopass-jsonapi
       # - gopass-summon-provider
-      - lynx
-      - w3m
-      - isync
+      # - mpd
       # - python-pip
       # - python-pipx
-      # - python-virtualenv
+      # - python-pynvim
       # - python-pyserial
+      # - python-virtualenv
+      # - tmatrix
+      # - ueberzugpp
+      # - wmctl
+      # - wmutils
+      - alacritty
+      - aspell
+      - aspell-en
+      - autoconf
+      - autogen
+      - automake
+      - boost
+      - btop
+      - cargo
+      - chromium
+      - entr # Needed by tmux plugins
+      - fprintd
+      - git-delta
+      - go
+      - inkscape
+      - isync
+      - kio-admin
+      - kitty
+      - lf
+      - lynx
+      - make
+      - mpc
+      - mpv
       - neomutt
       - newsboat
-      - timew
-      - task # taskwiki will fail without these
-      # - go-yq
-      - pandoc
-      # - glow
-      # - chezmoi
-      - inkscape
-      # - tmatrix
-      - btop
-      # - python-pynvim
-      - git-delta
-      - syncthing
-      # - wmutils
-      # - wmctl
-      - wl-clipboard
-      - automake
-      - patch   # for compiling tmux
-      - boost
-      # - fprint
-      - fprintd
-      - kio-admin
-      - mpv
-      - mpc
-      # - mpd
-      # - asdf
       - npm
-      - go
+      - openssh-server
+      - pandoc
+      - patch # for compiling tmux
+      - ranger
       - rust
-      - cargo
-
+      - syncthing
+      - task
+      - task # taskwiki will fail without these
+      - timew
+      - w3m
+      - weechat
+      - wl-clipboard
+      - mullvad-vpn
 # - name: Start and enable Pueue Service
 #   systemd:
 #     name: pueued

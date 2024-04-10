@@ -17,3 +17,8 @@
       - md.obsidian.Obsidian
       - org.videolan.VLC
       - com.calibre_ebook.calibre
+      - org.upscayl.Upscayl
+      - com.github.jeromerobert.pdfarranger
+# flatpak permission-set webextensions tridactyl snap.firefox yes
+# flatpak override --user --filesystem=~/.mozilla org.mozilla.firefox
+# flatpak run --env=MOZ_ENABLE_WAYLAND=1 org.mozilla.firefox

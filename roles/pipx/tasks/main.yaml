@@ -19,9 +19,10 @@
       - pandoc-include
       - pyfiglet
       - pyradio
-      - pyvizio
       - roll-cli
       - termtyper
       - tmuxp
       - vdirsyncer
       - youtube-dl
+      # - pyvizio
+      - git+https://github.com/fullstopslash/pyvizio

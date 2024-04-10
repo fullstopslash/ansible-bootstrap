@@ -8,7 +8,7 @@
       - yazi
       - lf
       - ranger
-      - entr   # Needed by tmux plugins
+      - entr # Needed by tmux plugins
       - aspell
       - autogen
       - autoconf
@@ -16,8 +16,9 @@
       - aspell-en
       - weechat
       - chromium
-      - pueue   # queing service for newsboat
+      - pueue # queing service for newsboat
       - kitty
+      - kdialog
       - alacritty
       - gopass
       - gopass-jsonapi
@@ -45,7 +46,7 @@
       - wmctrl
       - wl-clipboard
       - automake
-      - patch   # for compiling tmux
+      - patch # for compiling tmux
       - boost
       - fprint
       - fprintd
@@ -55,6 +56,7 @@
       - mpd
       - yt-dlp
       # - asdf
+      - vorbis-tools
       - yay
       - flatpak
       - npm
@@ -75,10 +77,10 @@
   become: yes
   ansible.builtin.lineinfile:
     path: /etc/sudoers.d/11-install-aur_builder
-    line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+    line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
     create: yes
     mode: 0644
-    validate: 'visudo -cf %s'
+    validate: "visudo -cf %s"
 
 - name: Install packages using yay
   kewlfft.aur.aur:
@@ -97,7 +99,9 @@
       - mpdris2
       # - quickgui
       - aria2
+      - typeracer
       - cura-bin
+      - mullvad-vpn-bin
   become: yes
   become_user: aur_builder
 
@@ -123,8 +127,6 @@
 #       - quickgui
 #       - aria2
 #       - cura
-
-
 
 # - name: Install package from AUR using a Pacman compatible AUR helper
 #   community.general.pacman:
