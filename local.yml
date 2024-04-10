@@ -15,8 +15,8 @@
     - arch
 
 - name: Install roles for fedora/dnf install hosts
-  hosts: 
-    - fedora
+  hosts:
+    - moot
     - minime
   become: yes
   roles:
@@ -31,7 +31,6 @@
   hosts: flatpak
   roles:
     - flatpak
-
 # - name: Install ansible-pull wrapper for managed hosts
 #   hosts: ansible_pull_managed
 #   roles:
