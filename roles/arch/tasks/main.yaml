@@ -1,5 +1,5 @@
 ---
-- name: Pacman Gui
+- name: Install Pacman Packages
   community.general.pacman:
     name: "{{ packages }}"
   vars:
@@ -63,7 +63,7 @@
       - go
       - rust
       - pueue
-      - plasma-wayland-session
+      - plasma-workspace
       - qt5-imageformats
 
 - name: Create the `aur_builder` user
