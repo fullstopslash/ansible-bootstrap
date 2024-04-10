@@ -4,12 +4,11 @@
     user: root
     state: present
     key: https://github.com/fullstopslash.keys
-
-- name: Start and enable Kmonad Service
-  ansible.builtin.systemd_service:
-    name: kmonad
-    state: started
-    enabled: yes
-    scope: user 
-  become: yes
-  become_user: rain
+# - name: Start and enable Kmonad Service
+#   ansible.builtin.systemd_service:
+#     name: kmonad
+#     state: started
+#     enabled: yes
+#     scope: user
+#   become: yes
+#   become_user: rain
