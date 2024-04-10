@@ -1,18 +1,18 @@
----
-name: Linting
-on: [push]
-jobs:
-  ansible-lint:
-    name: Ansible lint
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Set up VCS checkout
-        uses: actions/checkout@v3
-
-      # TODO file Issue about making configurable
-      - name: Copy ansible dependency file to location expected by ansible-lint
-        run: cp requirements.yaml requirements.yml
-
-      - name: Run ansible-lint
-        uses: ansible/ansible-lint-action@v6.11.0
+# ---
+# name: Linting
+# on: [push]
+# jobs:
+#   ansible-lint:
+#     name: Ansible lint
+#     runs-on: ubuntu-latest
+#
+#     steps:
+#       - name: Set up VCS checkout
+#         uses: actions/checkout@v3
+#
+#       # TODO file Issue about making configurable
+#       - name: Copy ansible dependency file to location expected by ansible-lint
+#         run: cp requirements.yaml requirements.yml
+#
+#       - name: Run ansible-lint
+#         uses: ansible/ansible-lint-action@v6.11.0

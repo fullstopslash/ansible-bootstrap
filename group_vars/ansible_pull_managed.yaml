@@ -5,4 +5,4 @@ ansible_pull_service_environment:
   ANSIBLE_CALLBACK_PLUGINS: plugins/callback
   ANSIBLE_CALLBACK_WHITELIST: ndjson
   ANSIBLE_STDOUT_CALLBACK: ndjson
-ansible_pull_playbook_repo: https://github.com/ivan-c/ansible-bootstrap
+ansible_pull_playbook_repo: https://github.com/fullstopslash/ansible-bootstrap
