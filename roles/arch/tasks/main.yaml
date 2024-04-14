@@ -55,7 +55,6 @@
       - mpc
       - mpd
       - yt-dlp
-      # - asdf
       - vorbis-tools
       - yay
       - flatpak
@@ -65,6 +64,7 @@
       - pueue
       - plasma-workspace
       - qt5-imageformats
+      # - asdf
 
 - name: Create the `aur_builder` user
   become: yes
@@ -97,11 +97,12 @@
       - taskopen
       - syncthingtray
       - mpdris2
-      # - quickgui
+      - ventoy-bin
       - aria2
       - typeracer
       - cura-bin
       - mullvad-vpn-bin
+      # - quickgui
   become: yes
   become_user: aur_builder
 
