@@ -68,7 +68,7 @@
     path: /var/lib/samba/usershares
     owner: root
     group: sambashare
-    mode: '1770'
+    mode: "1770"
   become: true
 
 # - name: create a directory to share
@@ -102,7 +102,7 @@
 - name: add a share
   lineinfile:
     dest: /etc/samba/smb.conf
-    regexp: ''
+    regexp: ""
     insertafter: EOF
     line: '[samba]\n\tpath = /opt/samba/\n\tread only = no\n;\tbrowseable = yes\n'
 

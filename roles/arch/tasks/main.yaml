@@ -60,34 +60,50 @@
       - flatpak
       - npm
       - go
-      - rust
+      - rustup
       - pueue
       - plasma-workspace
+      - kdegraphics-thumbnailers
       - qt5-imageformats
+      - tor
+      - torsocks
+      - tealdeer
+      - rdrview-git
       # - asdf
 
 - name: Create the `aur_builder` user
-  become: yes
+  become: true
   ansible.builtin.user:
     name: aur_builder
-    create_home: yes
+    create_home: true
     group: wheel
 
 - name: Allow the `aur_builder` user to run `sudo pacman` without a password
-  become: yes
+  become: true
   ansible.builtin.lineinfile:
     path: /etc/sudoers.d/11-install-aur_builder
     line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
-    create: yes
+    create: true
     mode: 0644
-    validate: "visudo -cf %s"
+    validate: visudo -cf %s
+
+# - name: adding existing "{{ ansible_user }}" to group sudo
+#   ansible.builtin.user:
+#     name: "{{ ansible_user }}"
+#     groups: wheel, input, uinput, debian-tor, tor
+#     append: yes
+#   become: yes
+#
+
+# TODO: What is the propper way to manage a go package?
+# - name: Install packages using go
+#     command: go install github.com/mrusme/reader@latest
 
 - name: Install packages using yay
   kewlfft.aur.aur:
     use: yay
     name:
       - kwalletcli
-      - kmonad-bin
       - neovim
       - quickemu
       - taskwarrior-tui-git
@@ -102,8 +118,10 @@
       - typeracer
       - cura-bin
       - mullvad-vpn-bin
+      - stl-thumb-kde
+      # - kmonad-bin
       # - quickgui
-  become: yes
+  become: true
   become_user: aur_builder
 
 # - name: Install package from AUR yay
@@ -140,7 +158,31 @@
   ansible.builtin.systemd_service:
     name: pueued
     state: started
-    enabled: yes
+    enabled: true
     scope: user
-  become: yes
+  become: true
   become_user: rain
+
+- name: Start and enable Tor Service
+  ansible.builtin.systemd_service:
+    name: tor
+    state: started
+    enabled: true
+  become: true
+
+- name: Start and enable MpDris2 Service
+  ansible.builtin.systemd_service:
+    name: mpDris2
+    state: started
+    enabled: true
+    scope: user
+  become: true
+  become_user: rain
+# - name: Start and enable MpDris2-rs Service
+#   ansible.builtin.systemd_service:
+#     name: mpdris2-rs
+#     state: started
+#     enabled: true
+#     scope: user
+#   become: true
+#   become_user: rain

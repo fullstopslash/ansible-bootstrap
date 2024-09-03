@@ -3,5 +3,6 @@
   community.general.cargo:
     name:
       - taskwarrior-tui
-      - pueue   # queing service for newsboat
+      - pueue # queing service for newsboat
       - yazi-fm
+      - mise

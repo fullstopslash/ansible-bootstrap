@@ -44,6 +44,7 @@
       # - ueberzugpp
       # - wmctl
       # - wmutils
+      # - stl-thumb-kde
       - alacritty
       - aspell
       - aspell-en
@@ -89,3 +90,13 @@
 #     state: started
 #     enabled: yes
 #     scope: user
+
+# - name: Check if nvm is installed
+#   shell: nvm --version
+#   register: nvm_version_cmd
+#   changed_when: false
+#   ignore_errors: true
+#
+# - name: Install nvm
+#   shell: wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+#   when: nvm_version_cmd is failed

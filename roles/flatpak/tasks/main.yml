@@ -11,14 +11,36 @@
       - org.gimp.GIMP
       - org.inkscape.Inkscape
       - org.mozilla.firefox
-      - org.inkscape.Inkscape
       - org.kde.krita
       - org.kde.arianna
       - md.obsidian.Obsidian
       - org.videolan.VLC
       - com.calibre_ebook.calibre
-      - org.upscayl.Upscayl
       - com.github.jeromerobert.pdfarranger
+      - com.github.wwmm.easyeffects
+      - org.prismlauncher.PrismLauncher
+      - org.upscayl.Upscayl
+      - io.github.martchus.syncthingtray
+      # - com.librumreader.librum
+      #
+      #
+      #
+
+- name: Add the flathub flathub-beta repository remote
+  community.general.flatpak_remote:
+    name: flathub-beta
+    state: present
+    flatpakrepo_url: https://flathub.org/beta-repo/flathub-beta.flatpakrepo
+
+- name: Install OpenSCAD from flathub-beta
+  community.general.flatpak:
+    name: org.openscad.OpenSCAD
+    remote: flathub-beta
+# flatpak override com.calibre_ebook.calibre --user --filesystem=~/.config/calibre
+# flatpak override org.mozilla.firefox --user --filesystem=~/.mozilla
+# flatpak install flathub io.github.btpf.alexandria
+# flatpak install flathub org.kde.arianna
+# flatpak install flathub com.github.babluboy.bookworm
+# flatpak install flathub com.ultimaker.cura
 # flatpak permission-set webextensions tridactyl snap.firefox yes
-# flatpak override --user --filesystem=~/.mozilla org.mozilla.firefox
 # flatpak run --env=MOZ_ENABLE_WAYLAND=1 org.mozilla.firefox

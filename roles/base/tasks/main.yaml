@@ -1,14 +1,43 @@
 ---
-- name: "Add my Github keys to root authorized_keys"
+- name: Add my Github keys to root authorized_keys
   ansible.posix.authorized_key:
     user: root
     state: present
     key: https://github.com/fullstopslash.keys
+
+- name: permit traffic in public zone for ssh service
+  ansible.posix.firewalld:
+    service: ssh
+    permanent: true
+    zone: public
+    state: enabled
+
+- name: permit traffic in public zone for warpinator service
+  ansible.posix.firewalld:
+    service: warpinator
+    permanent: true
+    zone: public
+    state: enabled
+
+- name: permit traffic in public zone for kdeconnect service
+  ansible.posix.firewalld:
+    service: kdeconnect
+    permanent: true
+    zone: public
+    state: enabled
+
 # - name: Start and enable Kmonad Service
 #   ansible.builtin.systemd_service:
 #     name: kmonad
 #     state: started
-#     enabled: yes
+#     enabled: true
 #     scope: user
-#   become: yes
+#   become: true
 #   become_user: rain
+
+- name: Ensuring that wheel is able to use sudo without password
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers
+    regexp: "^%wheel"
+    line: "%wheel ALL=(ALL) NOPASSWD: ALL"
+    validate: "visudo -cf %s"
