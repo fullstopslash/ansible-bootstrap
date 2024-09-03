@@ -9,7 +9,6 @@
 - name: Install roles for arch GUI hosts
   hosts:
     - arch
-    - hecate
   become: yes
   roles:
     - arch
@@ -17,17 +16,22 @@
 - name: Install roles for fedora/dnf install hosts
   hosts:
     - moot
+    - hecate
   become: yes
   roles:
-    - dnf4
+    - dnf
 
 - name: Install cargo for hosts
-  hosts: cargo
+  hosts:
+    - cargo
+    - hecate
   roles:
     - cargo
 
 - name: Install roles for flatpak
-  hosts: flatpak
+  hosts:
+    - flatpak
+    - hecate
   roles:
     - flatpak
 # - name: Install ansible-pull wrapper for managed hosts

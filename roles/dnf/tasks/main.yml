@@ -57,6 +57,7 @@
       - chromium
       - entr # Needed by tmux plugins
       - fprintd
+      - gcc
       - git-delta
       - go
       - inkscape
@@ -72,6 +73,7 @@
       - newsboat
       - npm
       - openssh-server
+      - openssl-devel
       - pandoc
       - patch # for compiling tmux
       - ranger
@@ -83,6 +85,8 @@
       - w3m
       - weechat
       - wl-clipboard
+      - yq
+      - ImageMagick-devel
       - mullvad-vpn
 # - name: Start and enable Pueue Service
 #   systemd:
