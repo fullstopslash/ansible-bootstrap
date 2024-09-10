@@ -69,6 +69,8 @@
       - make
       - mpc
       - mpv
+      - mksh
+      - most
       - neomutt
       - newsboat
       - npm

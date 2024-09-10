@@ -1,13 +1,6 @@
 ---
-# - name: Add the flathub flatpak repository remote
-#   community.general.flatpak_remote:
-#     name: flathub
-#     state: present
-#     flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
-
 - name: Install multiple flatpak packages
   community.general.flatpak:
-    method: user
     name:
       - org.gimp.GIMP
       - org.inkscape.Inkscape
@@ -21,17 +14,9 @@
       - com.github.wwmm.easyeffects
       - org.prismlauncher.PrismLauncher
       - org.upscayl.Upscayl
+      - com.valvesoftware.Steam
       - io.github.martchus.syncthingtray
       # - com.librumreader.librum
-      #
-      #
-      #
-
-- name: Add the flathub flathub-beta repository remote
-  community.general.flatpak_remote:
-    name: flathub-beta
-    state: present
-    flatpakrepo_url: https://flathub.org/beta-repo/flathub-beta.flatpakrepo
 
 - name: Install OpenSCAD from flathub-beta
   community.general.flatpak:
@@ -39,6 +24,8 @@
     remote: flathub-beta
 # flatpak override com.calibre_ebook.calibre --user --filesystem=~/.config/calibre
 # flatpak override org.mozilla.firefox --user --filesystem=~/.mozilla
+# Allow access to /tmp for firefox
+# sudo flatpak override org.mozilla.firefox --filesystem=/tmp
 # flatpak install flathub io.github.btpf.alexandria
 # flatpak install flathub org.kde.arianna
 # flatpak install flathub com.github.babluboy.bookworm
