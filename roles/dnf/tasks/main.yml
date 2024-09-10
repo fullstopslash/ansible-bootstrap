@@ -25,26 +25,6 @@
     name: "{{ packages }}"
   vars:
     packages:
-      # - asdf
-      # - chezmoi
-      # - fprint
-      # - glow
-      # - go-yq
-      # - gopass
-      # - gopass-hibp
-      # - gopass-jsonapi
-      # - gopass-summon-provider
-      # - mpd
-      # - python-pip
-      # - python-pipx
-      # - python-pynvim
-      # - python-pyserial
-      # - python-virtualenv
-      # - tmatrix
-      # - ueberzugpp
-      # - wmctl
-      # - wmutils
-      # - stl-thumb-kde
       - alacritty
       - aspell
       - aspell-en
@@ -90,6 +70,26 @@
       - yq
       - ImageMagick-devel
       - mullvad-vpn
+      # - asdf
+      # - chezmoi
+      # - fprint
+      # - glow
+      # - go-yq
+      # - gopass
+      # - gopass-hibp
+      # - gopass-jsonapi
+      # - gopass-summon-provider
+      # - mpd
+      # - python-pip
+      # - python-pipx
+      # - python-pynvim
+      # - python-pyserial
+      # - python-virtualenv
+      # - tmatrix
+      # - ueberzugpp
+      # - wmctl
+      # - wmutils
+      # - stl-thumb-kde
 # - name: Start and enable Pueue Service
 #   systemd:
 #     name: pueued
