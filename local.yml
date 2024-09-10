@@ -15,8 +15,7 @@
 
 - name: Install roles for fedora/dnf install hosts
   hosts:
-    - moot
-    - hecate
+    - dnf
   become: yes
   roles:
     - dnf
