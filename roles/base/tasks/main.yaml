@@ -1,6 +1,12 @@
 ---
 - name: Add my Github keys to root authorized_keys
   ansible.posix.authorized_key:
+    user: { { user } }
+    state: present
+    key: https://github.com/fullstopslash.keys
+
+- name: Add my Github keys to root authorized_keys
+  ansible.posix.authorized_key:
     user: root
     state: present
     key: https://github.com/fullstopslash.keys

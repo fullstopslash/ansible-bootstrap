@@ -10,3 +10,5 @@
   - [ ] cargo
   - [ ] flatpak
 - [ ] add all common firewall rules for my network
+- [ ] automate atuin login:
+  - [ ] atuin login --username $() --password $() --key $()
